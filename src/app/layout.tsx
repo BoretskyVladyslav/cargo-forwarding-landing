@@ -1,11 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "KTEK | Вантажні перевезення по Україні та Європі",
@@ -24,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="uk" className={`${geistMono.variable} h-full antialiased`}>
+    <html lang="uk" className="h-full antialiased">
       <body className="flex min-h-full min-w-0 flex-col bg-[#0A0A0A] font-sans text-slate-100">
         <a
           href="#main-content"

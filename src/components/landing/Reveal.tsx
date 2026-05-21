@@ -22,7 +22,7 @@ function getReducedMotionSnapshot() {
 }
 
 const revealMotion =
-  "transform-gpu transition-[opacity,transform] duration-300 ease-in-out motion-reduce:transition-none motion-reduce:duration-0 motion-reduce:opacity-100 motion-reduce:translate-y-0 motion-reduce:pointer-events-auto";
+  "transform-gpu transition-[opacity,transform] duration-500 ease-out motion-reduce:transition-none motion-reduce:duration-0 motion-reduce:opacity-100 motion-reduce:translate-y-0 motion-reduce:pointer-events-auto";
 
 export default function Reveal({
   children,
@@ -56,7 +56,7 @@ export default function Reveal({
         setIntersectSeen(true);
         obs.disconnect();
       },
-      { rootMargin: "0px 0px -14% 0px", threshold: 0.1 },
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.08 },
     );
     obs.observe(node);
     return () => obs.disconnect();
@@ -70,7 +70,7 @@ export default function Reveal({
       className={`${revealMotion} ${
         visible
           ? "pointer-events-auto translate-y-0 opacity-100"
-          : "pointer-events-none translate-y-4 opacity-0"
+          : "pointer-events-none translate-y-[20px] opacity-0"
       } ${className}`}
       style={{
         ...style,

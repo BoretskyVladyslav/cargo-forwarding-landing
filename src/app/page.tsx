@@ -3,6 +3,7 @@ import Reveal from "@/components/landing/Reveal";
 import RouteMesh from "@/components/landing/RouteMesh";
 import SiteHeader from "@/components/landing/SiteHeader";
 import LeadForm from "@/components/LeadForm";
+import Image from "next/image";
 import {
   MetricFleetIcon,
   MetricPinIcon,
@@ -61,11 +62,14 @@ const WHY_ICONS = [
 
 const year = new Date().getFullYear();
 
-const sectionX = "px-4 sm:px-6 lg:px-8";
-/** Consistent vertical rhythm: compact mobile, airy desktop */
-const sectionY = "py-12 md:py-24";
+const LOGO_WIDTH = 1436;
+const LOGO_HEIGHT = 1360;
 
-/** About metric cards — solid grid cards with hover lift in globals.css */
+const sectionX = "px-4 sm:px-6 lg:px-8";
+const sectionY = "py-12 md:py-24";
+const METRIC_REVEAL_STAGGER_MS = 80;
+const WHY_REVEAL_STAGGER_MS = 100;
+
 const metricCardClass =
   "grid-card metric-card group relative flex h-full min-w-0 flex-col rounded-2xl border border-[#B59410]/20 bg-[#161616] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-all duration-300 ease-in-out motion-reduce:transition-none sm:p-7";
 
@@ -114,7 +118,6 @@ export default function Home() {
 
               <div className="relative z-[2] flex w-full min-w-0 justify-center md:justify-end">
                 <div className="hero-form-shell relative w-full max-w-md rounded-2xl">
-                  {/* Local spotlight rim for LeadForm */}
                   <div className="pointer-events-none absolute -inset-8 -z-[1] rounded-[2rem] bg-[radial-gradient(ellipse_at_52%_45%,rgba(212,175,55,0.11)_0%,rgba(251,191,36,0.05)_42%,transparent_68%)] opacity-95 blur-xl" aria-hidden />
                   <div className="rounded-2xl bg-[#161616]">
                     <LeadForm embedded />
@@ -148,7 +151,7 @@ export default function Home() {
                   const Icon = METRIC_ICONS[i];
                   return (
                     <li key={item.title} className="h-full min-w-0 list-none">
-                      <Reveal delayMs={80 * i} className="h-full">
+                      <Reveal delayMs={METRIC_REVEAL_STAGGER_MS * i} className="h-full">
                         <div className={metricCardClass}>
                           <Icon />
                           <h3 className="mt-5 text-base font-semibold text-slate-50 sm:text-lg">
@@ -183,26 +186,30 @@ export default function Home() {
                   const Icon = WHY_ICONS[i];
                   const step = String(i + 1);
                   return (
-                    <li
-                      key={item.title}
-                      className="why-panel why-card group relative list-none min-w-0"
-                    >
-                      <span className="why-panel__step" aria-hidden>
-                        {step}
-                      </span>
-                      <div className="why-panel__body">
-                        <div className="flex min-w-0 items-start gap-3.5 sm:gap-4">
-                          <span className="why-panel__icon shrink-0">
-                            <Icon />
+                    <li key={item.title} className="h-full min-w-0 list-none">
+                      <Reveal
+                        delayMs={WHY_REVEAL_STAGGER_MS * i}
+                        className="h-full"
+                      >
+                        <div className="why-panel why-card group relative min-w-0">
+                          <span className="why-panel__step" aria-hidden>
+                            {step}
                           </span>
-                          <h3 className="min-w-0 pt-0.5 text-base font-semibold leading-snug text-slate-50 sm:text-lg">
-                            {item.title}
-                          </h3>
+                          <div className="why-panel__body">
+                            <div className="flex min-w-0 items-start gap-3.5 sm:gap-4">
+                              <span className="why-panel__icon shrink-0">
+                                <Icon />
+                              </span>
+                              <h3 className="min-w-0 pt-0.5 text-base font-semibold leading-snug text-slate-50 sm:text-lg">
+                                {item.title}
+                              </h3>
+                            </div>
+                            <p className="mt-3 text-sm leading-relaxed text-slate-400 sm:mt-4 sm:text-[15px]">
+                              {item.body}
+                            </p>
+                          </div>
                         </div>
-                        <p className="mt-3 text-sm leading-relaxed text-slate-400 sm:mt-4 sm:text-[15px]">
-                          {item.body}
-                        </p>
-                      </div>
+                      </Reveal>
                     </li>
                   );
                 })}
@@ -211,16 +218,29 @@ export default function Home() {
           </section>
         </main>
 
-        <footer className="min-w-0 border-t border-[#B59410]/20 bg-[#0A0A0A]">
-          <div className={`footer-tagline ${sectionX}`}>
-            <p className="mx-auto max-w-4xl text-center text-3xl font-bold leading-tight tracking-tight text-white md:text-4xl">
-              KTEK — рухаємо ваш бізнес вперед.
+        <footer className="min-w-0 bg-[#0A0A0A]">
+          <div
+            className={`w-full border-t border-[#B59410]/20 bg-[#161616] py-16 md:py-24 ${sectionX}`}
+          >
+            <p className="mx-auto max-w-4xl text-center text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+              <span className="text-white">KTEK</span>
+              <span className="text-white/90"> — </span>
+              <span className="text-[#D4AF37]">рухаємо ваш бізнес вперед.</span>
             </p>
           </div>
           <div
-            className={`footer-meta mx-auto flex w-full max-w-7xl min-w-0 flex-col items-center gap-4 text-center text-sm leading-relaxed text-slate-400 ${sectionX} sm:flex-row sm:justify-between sm:text-left`}
+            className={`footer-meta mx-auto flex w-full max-w-7xl min-w-0 flex-col items-center gap-6 text-center text-sm leading-relaxed text-slate-400 ${sectionX} sm:flex-row sm:justify-between sm:text-left`}
           >
-            <p>© {year} KTEK. Всі права захищені.</p>
+            <div className="flex flex-col items-center gap-3.5 sm:flex-row sm:items-center sm:gap-4">
+              <Image
+                src="/img/logo.png"
+                alt="KTEK"
+                width={LOGO_WIDTH}
+                height={LOGO_HEIGHT}
+                className="h-14 w-auto opacity-90 md:h-18"
+              />
+              <p>© {year} KTEK. Всі права захищені.</p>
+            </div>
             <p>
               <a
                 href="/privacy"

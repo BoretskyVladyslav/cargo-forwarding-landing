@@ -1,4 +1,3 @@
-/** Hero-only soft spotlights behind copy and lead form — no dashed map lines. */
 export default function HeroBackdrop() {
   return (
     <div

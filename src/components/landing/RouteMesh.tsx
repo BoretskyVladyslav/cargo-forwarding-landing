@@ -1,4 +1,3 @@
-/** Full-page ambience — soft radial washes only (no SVG route clutter). */
 export default function RouteMesh() {
   return (
     <div

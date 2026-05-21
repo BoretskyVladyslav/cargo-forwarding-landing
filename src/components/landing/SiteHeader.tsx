@@ -1,7 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
+const LOGO_WIDTH = 1436;
+const LOGO_HEIGHT = 1360;
 const CONTACT_PHONE_DISPLAY = "+38 (067) 000-00-00";
 const CONTACT_PHONE_HREF = "tel:+380670000000";
 const CONTACT_EMAIL = "office@ktek.ua";
@@ -46,25 +49,23 @@ export default function SiteHeader() {
           : "border-b border-transparent bg-transparent backdrop-blur-0 supports-[backdrop-filter]:bg-transparent"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
-        <div className="flex items-center justify-between gap-4">
+      <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 sm:py-4 lg:px-8">
+        <div className="flex items-center justify-between gap-4 md:gap-6">
           <a
             href="#hero"
-            className="group inline-flex min-h-11 shrink-0 touch-manipulation items-center gap-2.5 rounded-md transition-[opacity,color,transform] duration-300 ease-in-out hover:opacity-95 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2 focus-visible:ring-offset-brand-background motion-reduce:transition-none motion-reduce:active:scale-100"
+            className="group inline-flex shrink-0 touch-manipulation items-center rounded-md transition-[opacity,transform] duration-300 ease-in-out hover:opacity-95 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2 focus-visible:ring-offset-brand-background motion-reduce:transition-none motion-reduce:active:scale-100"
           >
-            <span className="text-lg font-semibold uppercase tracking-[0.22em] text-brand-foreground sm:text-xl">
-              KTEK
-            </span>
-            <span
-              className="relative flex h-2.5 w-2.5 items-center justify-center"
-              aria-hidden
-            >
-              <span className="absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-45 blur-[4px]" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#D4AF37] shadow-[0_0_20px_rgba(212,175,55,0.75),0_0_10px_rgba(251,191,36,0.35)] ring-[1px] ring-[#D4AF37]/65" />
-            </span>
+            <Image
+              src="/img/logo.png"
+              alt="KTEK"
+              width={LOGO_WIDTH}
+              height={LOGO_HEIGHT}
+              priority
+              className="h-16 w-auto md:h-20"
+            />
           </a>
 
-          <div className="flex min-h-11 items-center justify-end gap-3 sm:gap-4">
+          <div className="flex shrink-0 items-center justify-end gap-3 sm:gap-4">
             <a
               href={CONTACT_PHONE_HREF}
               aria-label={phoneLabel}

@@ -1,7 +1,5 @@
-/** Metric + Why icons — animation hooks live in globals.css (`.metric-*`, `.why-*`). */
-
 const metricSvgProps = {
-  className: "landing-icon-metric h-11 w-11 shrink-0 text-brand-gold",
+  className: "h-11 w-11 shrink-0 text-brand-gold",
   viewBox: "0 0 48 48",
   fill: "none" as const,
   "aria-hidden": true,
@@ -12,7 +10,7 @@ const metricSvgProps = {
 };
 
 const whySvgProps = {
-  className: "landing-icon-why h-10 w-10 shrink-0 text-brand-gold",
+  className: "h-10 w-10 shrink-0 text-brand-gold",
   fill: "none" as const,
   "aria-hidden": true,
   stroke: "currentColor",
@@ -216,7 +214,7 @@ export function WhyContractMotionIcon() {
   return (
     <svg
       {...whySvgProps}
-      className="landing-icon-why h-10 w-10 shrink-0 text-brand-gold-muted"
+      className="h-10 w-10 shrink-0 text-brand-gold-muted"
       viewBox="0 0 40 44"
       strokeWidth={1.15}
     >
@@ -262,7 +260,7 @@ export function WhyRouteMotionIcon() {
   return (
     <svg
       {...whySvgProps}
-      className="landing-icon-why h-10 w-10 shrink-0 text-brand-gold-muted"
+      className="h-10 w-10 shrink-0 text-brand-gold-muted"
       viewBox="0 0 42 42"
       strokeWidth={1.25}
     >
