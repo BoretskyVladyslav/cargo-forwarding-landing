@@ -2,12 +2,15 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import {
+  CONTACT_EMAIL,
+  CONTACT_MAILTO_HREF,
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_HREF,
+} from "@/lib/contact";
 
 const LOGO_WIDTH = 1436;
 const LOGO_HEIGHT = 1360;
-const CONTACT_PHONE_DISPLAY = "+38 (067) 000-00-00";
-const CONTACT_PHONE_HREF = "tel:+380670000000";
-const CONTACT_EMAIL = "office@ktek.ua";
 
 function PhoneGlyph({ className }: { className?: string }) {
   return (
@@ -85,7 +88,7 @@ export default function SiteHeader() {
                 {CONTACT_PHONE_DISPLAY}
               </a>
               <a
-                href={`mailto:${CONTACT_EMAIL}`}
+                href={CONTACT_MAILTO_HREF}
                 className="nav-underline inline-flex min-h-11 touch-manipulation items-center py-2 text-[#d0d0d0] hover:text-white focus-visible:outline-none active:scale-[0.98]"
               >
                 {CONTACT_EMAIL}

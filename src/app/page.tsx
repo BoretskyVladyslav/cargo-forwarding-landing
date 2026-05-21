@@ -5,6 +5,12 @@ import SiteHeader from "@/components/landing/SiteHeader";
 import LeadForm from "@/components/LeadForm";
 import Image from "next/image";
 import {
+  CONTACT_EMAIL,
+  CONTACT_MAILTO_HREF,
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_HREF,
+} from "@/lib/contact";
+import {
   MetricFleetIcon,
   MetricPinIcon,
   MetricScaleIcon,
@@ -229,7 +235,7 @@ export default function Home() {
             </p>
           </div>
           <div
-            className={`footer-meta mx-auto flex w-full max-w-7xl min-w-0 flex-col items-center gap-6 text-center text-sm leading-relaxed text-slate-400 ${sectionX} sm:flex-row sm:justify-between sm:text-left`}
+            className={`footer-meta mx-auto flex w-full max-w-7xl min-w-0 flex-col items-center gap-6 text-center text-sm leading-relaxed text-slate-400 ${sectionX} sm:flex-row sm:flex-wrap sm:justify-between sm:text-left`}
           >
             <div className="flex flex-col items-center gap-3.5 sm:flex-row sm:items-center sm:gap-4">
               <Image
@@ -241,7 +247,21 @@ export default function Home() {
               />
               <p>© {year} KTEK. Всі права захищені.</p>
             </div>
-            <p>
+            <div className="flex flex-col items-center gap-2 sm:items-end">
+              <a
+                href={CONTACT_PHONE_HREF}
+                className="inline-flex min-h-11 touch-manipulation items-center text-slate-300 transition-colors duration-300 hover:text-[#D4AF37] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
+              >
+                {CONTACT_PHONE_DISPLAY}
+              </a>
+              <a
+                href={CONTACT_MAILTO_HREF}
+                className="inline-flex min-h-11 touch-manipulation items-center text-slate-300 transition-colors duration-300 hover:text-[#D4AF37] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
+              >
+                {CONTACT_EMAIL}
+              </a>
+            </div>
+            <p className="sm:w-full sm:text-center md:w-auto md:text-right">
               <a
                 href="/privacy"
                 className="inline-flex min-h-11 touch-manipulation items-center text-[#D4AF37] underline-offset-4 transition-colors duration-300 hover:text-[#e6c758] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A]"
